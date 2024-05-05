@@ -1,11 +1,8 @@
 <h1>User info</h1>
-
 <%= image_tag @user.get_profile_image(100,100) %>
 <p>name <%= @user.name %></p>
 <p>introduction <%= @user.introduction %></p>
 <%= link_to '<i class="fas fa-user-gear"></i>'.html_safe, edit_user_path(current_user) %>
-
-
 
 <h1>New Book</h1>
 <% if @book.errors.any? %>
@@ -22,4 +19,17 @@
   <h6>Opinion</h6>
   <%= f.text_area :body %><br>
   <%= f.submit 'Create Book' %>
+<% end %>
+
+<h1>Books</h1>
+<% @books.each do |book| %>
+<% if current_user.profile_image.attached? %>
+  <%= image_tag url_for(current_user.profile_image) %>
+<% else %>
+  <p>No profile image attached.</p>
+<% end %>
+<p>Title</p>
+<%= book.title %>
+<p>Opinion</p>
+<%= book.body %>
 <% end %>
