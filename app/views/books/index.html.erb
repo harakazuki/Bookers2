@@ -21,15 +21,24 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 
-<h1>Books</h1>
-<% @books.each do |book| %>
-<% if current_user.profile_image.attached? %>
-  <%= image_tag url_for(current_user.profile_image) %>
-<% else %>
-  <p>No profile image attached.</p>
-<% end %>
-<p>Title</p>
-<%= book.title %>
-<p>Opinion</p>
-<%= book.body %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to user_path(book.user) do %>
+            <%= image_tag url_for(book.user.profile_image) %>
+          <% end %>
+        </td>
+        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= book.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
