@@ -19,7 +19,11 @@ class BooksController < ApplicationController
 
   def show
     @users = User.all
-    @books = Book.all
+    if user_signed_in?
+      @books = current_user.books
+    else
+      @books = Book.all
+    end
     @book = Book.find(params[:id])
     @user = @book.user
 
@@ -32,7 +36,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to @book, notice: "You have updated book successfully."
+      redirect_to @book, notice: "Book was successfully updated."
     else
       render :edit
     end
