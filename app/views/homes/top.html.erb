@@ -1,23 +1,32 @@
-<div>
- <%= flash[:notice] %>
-</div>
-<script src="https://kit.fontawesome.com/8a284926e8.js" crossorigin="anonymous"></script>
-<h1>welcome to 
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers!!</strong>
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <%= flash[:notice] %>
+      </div>
+      <h1>welcome to 
+        <i class="fa-solid fa-book"></i>
+        <strong>Bookers!!</strong>
+      </h1>
+      <p>in
+      
+        <i class="fa-solid fa-book"></i>
+        <strong>Bookers,</strong>
+      </p>
 
-<p>in
-  <i class="fa-solid fa-book"></i>
-  <strong>Bookers,</strong>
-</p>
+      <p>you can share and exchange your opinions , inpressions , and emotions</p>
+      <p>about various books!</p>
 
-<p>you can share and exchange your opinions , inpressions , and emotions</p>
-<p>bout various books!</p>
-
-<div>
-  <%= link_to "Log in", new_user_session_path %>
-</div>
-<div>
-  <%= link_to "Sign up", new_user_registration_path %>
+      <div>
+        <%= link_to new_user_session_path, class: 'btn btn-info', role: 'button' do %>
+        Log in
+        <% end %>
+      </div>
+      <div>
+        <%= link_to new_user_registration_path, class: 'btn btn-success', role: 'button' do %>
+        Sign up
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

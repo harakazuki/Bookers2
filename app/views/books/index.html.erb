@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <%= render 'left', user: @user, book: @book %>
-    <div class="offset-md-1"></div>
-    <div class="col-md-8">
+    <div class="col-md-3">
+      <%= render 'left', user: @user, book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
     <h1>Books</h1>
     <table>
       <thead>
